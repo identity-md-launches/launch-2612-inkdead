@@ -1,0 +1,24 @@
+{
+  "kind": "custom_token",
+  "token": {
+    "contract": "IDEADToken",
+    "name": "InkDead",
+    "symbol": "IDEAD",
+    "decimals": 18,
+    "constructorArgs": [],
+    "totalSupply": "1000000000000000000000000000"
+  },
+  "contracts": [],
+  "pool": {
+    "pairedCurrency": "0xd34a99bc0f67ae1bbd63c660e6d0b0dd03e263b7",
+    "fee": 12500,
+    "tickSpacing": 60,
+    "initialPrice": "79228162514264337593543950336"
+  },
+  "economics": {
+    "poolBps": 8000,
+    "initialMarketCapWei": "4299000000000000000000",
+    "remainderTo": "0x2587352d988530a97a8f8a1b15ad5bd14f32c94f"
+  },
+  "notes": "IDEADToken (src/IDEADToken.sol) is a plain, fixed-supply ERC-20: name InkDead, symbol IDEAD, 18 decimals. Its constructor takes no arguments, makes no external calls, and mints the whole supply of 1,000,000,000 tokens (1000000000000000000000000000 minor units) once to msg.sender, which under launchCustom is the factory. Nothing can mint afterwards: totalSupply() is a compile-time constant, and there is no owner, minter, pause, blacklist, freeze, lock, seize, burnFrom, transfer fee, burn-on-transfer, delegatecall, selfdestruct, proxy or initializer. Because no transfer is taxed, every launch flow (factory to MerkleDistributor, distributor to claimant, factory seed into the Uniswap v4 PoolManager, and trader buys and sells) moves exactly the amount stated, so the token needs no factory, pool manager or launch number argument and exempts nothing. There are no application contracts in this launch. Pool and economics are the launch's own: the pool pairs with IMD at 0xd34a99bc0f67ae1bbd63c660e6d0b0dd03e263b7 at the policy fee of 12500 (1.25%) and tick spacing 60; initialPrice is provenance only, the deployer derives the opening price from economics.initialMarketCapWei (4,299 IMD for the whole supply) and totalSupply. The factory takes the swarm's share, seeds the pool with poolBps (80%) of the supply, and forwards the remainder to economics.remainderTo."
+}
